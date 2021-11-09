@@ -16,7 +16,11 @@ import zipfile  # zip文件
 import shutil  # 删除整个文件夹
 from jsmin import jsmin  # js压缩
 import base64
+import time
+import random
 
+jsFileNumber = 0
+cssFileNumber = 0
 
 def get_file_from_folder(dir,exList):
     '''
@@ -242,11 +246,33 @@ def JavaScript(content, min=True):
     '''
         将一段js代码封装成 <script> ... </script>
     '''
-    return '<script charset="utf-8">\n'+jsmin(content)+'\n</script>\n' if min else '<script charset="utf-8">\n'+content+'\n</script>\n'
+    # timeCode = str(round(time.time() * 1000))
+    # jsFileName = 'js/'+timeCode[-4:]+str(random.randint(1000,9999))+'.js'
+    global jsFileNumber
+    jsFileNumber = jsFileNumber + 1
+    jsFileName = 'js/00'+str(jsFileNumber)+'.js'
+    if not os.path.exists('./publish/') :
+        os.mkdir('./publish/')
+    savingtxtmsg = open('./publish/'+jsFileName, 'w')
+    jsFileContent = jsmin(content) if min else content
+    savingtxtmsg.write(jsFileContent)
+    savingtxtmsg.close()
+    # return '<script charset="utf-8">\n'+jsmin(content)+'\n</script>\n' if min else '<script charset="utf-8">\n'+content+'\n</script>\n'
+    return '<script charset="utf-8" src="'+jsFileName+'"></script>\n'
 
 
 def StyleScript(content, min=True):
     '''
         将一段css 代码封装成 <style> ... </style>
     '''
-    return '\t<style type="text/css">\n'+jsmin(content) + '\n</style>\n' if min else '<style>\n'+content + '\n</style>\n'
+    global cssFileNumber
+    cssFileNumber = cssFileNumber + 1
+    cssFileName = 'css/00'+str(cssFileNumber)+'.css'
+    if not os.path.exists('./publish/') :
+        os.mkdir('./publish/')
+    savingtxtmsg = open('./publish/'+cssFileName, 'w')
+    cssFileContent = jsmin(content) if min else content
+    savingtxtmsg.write(cssFileContent)
+    savingtxtmsg.close()
+    # return '\t<style type="text/css">\n'+jsmin(content) + '\n</style>\n' if min else '<style>\n'+content + '\n</style>\n'
+    return '<link rel="stylesheet" type="text/css" href="'+cssFileName+'">\n'
