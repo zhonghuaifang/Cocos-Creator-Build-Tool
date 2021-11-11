@@ -5,3 +5,4 @@ build
 web-mobile/*
 log
 publish
+./lh/*

@@ -246,11 +246,11 @@ def JavaScript(content, min=True):
     '''
         将一段js代码封装成 <script> ... </script>
     '''
-    # timeCode = str(round(time.time() * 1000))
-    # jsFileName = 'js/'+timeCode[-4:]+str(random.randint(1000,9999))+'.js'
-    global jsFileNumber
-    jsFileNumber = jsFileNumber + 1
-    jsFileName = 'js/00'+str(jsFileNumber)+'.js'
+    timeCode = str(round(time.time() * 1000))
+    jsFileName = 'js/'+timeCode+str(random.randint(1000,9999))+'.js'
+    # global jsFileNumber
+    # jsFileNumber = jsFileNumber + 1
+    # jsFileName = 'js/00'+str(jsFileNumber)+'.js'
     if not os.path.exists('./publish/') :
         os.mkdir('./publish/')
     savingtxtmsg = open('./publish/'+jsFileName, 'w')
@@ -265,14 +265,14 @@ def StyleScript(content, min=True):
     '''
         将一段css 代码封装成 <style> ... </style>
     '''
-    global cssFileNumber
-    cssFileNumber = cssFileNumber + 1
-    cssFileName = 'css/00'+str(cssFileNumber)+'.css'
-    if not os.path.exists('./publish/') :
-        os.mkdir('./publish/')
-    savingtxtmsg = open('./publish/'+cssFileName, 'w')
-    cssFileContent = jsmin(content) if min else content
-    savingtxtmsg.write(cssFileContent)
-    savingtxtmsg.close()
-    # return '\t<style type="text/css">\n'+jsmin(content) + '\n</style>\n' if min else '<style>\n'+content + '\n</style>\n'
-    return '<link rel="stylesheet" type="text/css" href="'+cssFileName+'">\n'
+    # global cssFileNumber
+    # cssFileNumber = cssFileNumber + 1
+    # cssFileName = '00'+str(cssFileNumber)+'.css'
+    # if not os.path.exists('./publish/') :
+    #     os.mkdir('./publish/')
+    # savingtxtmsg = open('./publish/'+cssFileName, 'w')
+    # cssFileContent = jsmin(content) if min else content
+    # savingtxtmsg.write(cssFileContent)
+    # savingtxtmsg.close()
+    return '\t<style type="text/css">\n'+jsmin(content) + '\n</style>\n' if min else '<style>\n'+content + '\n</style>\n'
+    # return '<link rel="stylesheet" type="text/css" href="'+cssFileName+'">\n'
