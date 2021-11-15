@@ -6,3 +6,5 @@ web-mobile/*
 log
 publish
 .lh
+cc_web_mobile/web-mobile/*
+publish/*
