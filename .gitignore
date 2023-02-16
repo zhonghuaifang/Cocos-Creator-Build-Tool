@@ -4,7 +4,4 @@ build/main/xref-main.html
 build
 web-mobile/*
 log
-publish
 .lh
-cc_web_mobile/web-mobile/*
-publish/*
