@@ -1,6 +1,5 @@
 # Cocos-Creator-Build-Tool
-$\underline{可以解决 Cocos Creator 2.4x 版本 Web包 跨域问题}$
-$\underline{打包成可适用于facebook试玩广告的index.html和js文件夹}$
+$\underline{可以解决 Cocos Creator 2.4x 版本 Web包 跨域问题 打包成单Html}$
 ## 构建预览
 ![image](./README_RES/Build_Setting.png)
 

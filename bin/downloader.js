@@ -85,7 +85,7 @@
         let source = window.resMap[url];
         var d = document,
             s = document.createElement('script');
-        s.setAttribute('type', "text/javascript");
+        s.type = 'text/javascript';
         s.text = source;
         d.body.appendChild(s);
     }
