@@ -32,6 +32,12 @@ def build():
         bar = ProgressBar(total = 12,width=10)
         stime = time.time()
         
+        # 为了清缓存，删除原有js文件，重新生成新命名的js文件
+        if os.path.exists('./publish/js'):
+            IUtils.del_children_file('./publish/js')
+        else:
+            os.makedirs('./publish/js') 
+        
         #Clean Html
         html_content = IUtils.fromFile(index_html_path)
         html_content = re.sub(
